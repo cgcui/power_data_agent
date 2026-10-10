@@ -1,26 +1,42 @@
 # 绪论　从电网数据到数据智能体
 
-> **所属**：全书开篇　｜　**状态**：✅ 初稿完成（LaTeX 源码 + PDF）
+> **所属**：全书开篇　｜　**状态**：✅ 初稿完成（LaTeX 源码 + 宋体版 PDF）
 
 ## 文件
 
 | 文件 | 说明 |
 |---|---|
 | `绪论.tex` | LaTeX 源码（ctexart + TikZ，含 4 幅内联图，无外部图片依赖） |
-| `绪论.pdf` | 编译产物，共 4 页（A4） |
+| `绪论.pdf` | 编译产物，共 4 页 A4 ｜ **宋体正文 + 黑体标题**（SimSun / SimHei 子集嵌入） |
 
 ## 编译方式
 
+**推荐：XeLaTeX（宋体版）**
+
 ```bash
-# 本机已安装 tectonic（自包含引擎，自动拉取宏包，无需完整 TeX Live）
+export PATH="$HOME/TinyTeX/bin/windows:$PATH"
+cd "绪论-从电网数据到数据智能体"
+xelatex -interaction=nonstopmode 绪论.tex
+xelatex -interaction=nonstopmode 绪论.tex   # 第二遍生成交叉引用
+```
+
+或在仓库根目录直接用脚本：
+
+```bash
+./build.sh "绪论-从电网数据到数据智能体"
+```
+
+XeLaTeX 下 ctex 会自动选用 `ctex-fontset-windows`：正文 **SimSun**、粗体 **SimHei**、
+斜体 **KaiTi**，无需任何额外配置。
+
+**备选：tectonic（Fandol 字体）**
+
+```bash
 tectonic 绪论.tex --outdir .
 ```
 
-也可用 XeLaTeX（`ctexart` 自动匹配中文字体）：
-
-```bash
-xelatex 绪论.tex
-```
+tectonic 在 Windows 下无法枚举系统字体，ctex 会回退到自带的 Fandol（FandolSong / FandolKai）——
+中文渲染正常、字体同样嵌入，**但不是宋体**。源码无需改动，两种引擎均可编译。
 
 ## 小节清单
 

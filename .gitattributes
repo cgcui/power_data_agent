@@ -1,0 +1,6 @@
+# 统一使用 LF，避免 .sh 在 Git Bash 下因 CRLF 失效
+* text=auto
+*.sh   text eol=lf
+*.tex  text eol=lf
+*.md   text eol=lf
+*.pdf  binary
